@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ContactFormDialog from "./ContactFormDialog";
 
 const CTA = () => {
+  const [isBuildOpen, setIsBuildOpen] = useState(false);
+  const [isStrategyOpen, setIsStrategyOpen] = useState(false);
+
   return (
     <section id="cta" className="relative py-24 px-6 overflow-hidden">
       {/* Background glow */}
@@ -29,15 +34,37 @@ const CTA = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" variant="hero" className="text-lg px-10">
+            <Button 
+              size="lg" 
+              variant="hero" 
+              className="text-lg px-10"
+              onClick={() => setIsBuildOpen(true)}
+            >
               Build My AI Now
             </Button>
-            <Button size="lg" variant="outline-glow" className="text-lg px-10">
+            <Button 
+              size="lg" 
+              variant="outline-glow" 
+              className="text-lg px-10"
+              onClick={() => setIsStrategyOpen(true)}
+            >
               Free Strategy Call
             </Button>
           </div>
         </motion.div>
       </div>
+
+      <ContactFormDialog
+        isOpen={isBuildOpen}
+        onClose={() => setIsBuildOpen(false)}
+        type="build"
+      />
+      
+      <ContactFormDialog
+        isOpen={isStrategyOpen}
+        onClose={() => setIsStrategyOpen(false)}
+        type="strategy"
+      />
     </section>
   );
 };
