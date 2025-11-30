@@ -16,69 +16,71 @@ const Hero = () => {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(77,166,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(77,166,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
       
       <div className="container relative z-10 px-6 mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+        <div className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
+          {/* Logo */}
+          <motion.img
+            src={logo}
+            alt="AgentXcel AI"
+            className="w-20 h-20 mb-8 rounded-2xl hover:scale-110 transition-transform duration-300"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+          />
+          
+          <motion.h1
+            className="text-5xl lg:text-7xl font-bold mb-6 leading-tight"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-left"
+            transition={{ delay: 0.2, duration: 0.8 }}
           >
-            {/* Logo */}
-            <motion.img
-              src={logo}
-              alt="AgentXcel AI"
-              className="w-20 h-20 mb-8 rounded-2xl hover:scale-110 transition-transform duration-300"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-            />
-            
-            <motion.h1
-              className="text-5xl lg:text-7xl font-bold mb-6 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
+            <span className="glow-text-cyan">Build Smarter.</span>
+            <br />
+            <span className="glow-text-purple">Automate Faster.</span>
+            <br />
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Scale Effortlessly.
+            </span>
+          </motion.h1>
+          
+          <motion.p
+            className="text-xl text-muted-foreground mb-8 max-w-3xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            AgentXcel AI builds next-gen AI Agents, chatbots, automations, and intelligent systems tailored for your business — powered by cutting-edge AI.
+          </motion.p>
+          
+          <motion.div
+            className="flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+            <Button 
+              size="lg" 
+              variant="hero" 
+              className="text-lg px-8"
+              onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <span className="glow-text-cyan">Build Smarter.</span>
-              <br />
-              <span className="glow-text-purple">Automate Faster.</span>
-              <br />
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Scale Effortlessly.
-              </span>
-            </motion.h1>
-            
-            <motion.p
-              className="text-xl text-muted-foreground mb-8 max-w-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              Launch a Project
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline-glow" 
+              className="text-lg px-8"
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              AgentXcel AI builds next-gen AI Agents, chatbots, automations, and intelligent systems tailored for your business — powered by cutting-edge AI.
-            </motion.p>
-            
-            <motion.div
-              className="flex flex-wrap gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              <Button size="lg" variant="hero" className="text-lg px-8">
-                Launch a Project
-              </Button>
-              <Button size="lg" variant="outline-glow" className="text-lg px-8">
-                See Our Work
-              </Button>
-            </motion.div>
+              See Our Work
+            </Button>
           </motion.div>
           
-          {/* Right visual */}
+          {/* Visual element */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
-            className="relative animate-float"
+            transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
+            className="relative mt-16 animate-float max-w-2xl"
           >
             <div className="relative">
               <img
