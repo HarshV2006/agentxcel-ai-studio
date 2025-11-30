@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.jpeg";
 import heroVisual from "@/assets/hero-visual.jpg";
+import ContactFormDialog from "./ContactFormDialog";
 
 const Hero = () => {
+  const [isBuildOpen, setIsBuildOpen] = useState(false);
+  const [isStrategyOpen, setIsStrategyOpen] = useState(false);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-20 w-96 h-96 bg-primary/30 rounded-full blur-[120px] animate-pulse-glow"></div>
@@ -61,7 +66,7 @@ const Hero = () => {
               size="lg" 
               variant="hero" 
               className="text-lg px-8"
-              onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => setIsBuildOpen(true)}
             >
               Launch a Project
             </Button>
@@ -99,6 +104,18 @@ const Hero = () => {
       
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
+
+      <ContactFormDialog
+        isOpen={isBuildOpen}
+        onClose={() => setIsBuildOpen(false)}
+        type="build"
+      />
+      
+      <ContactFormDialog
+        isOpen={isStrategyOpen}
+        onClose={() => setIsStrategyOpen(false)}
+        type="strategy"
+      />
     </section>
   );
 };
