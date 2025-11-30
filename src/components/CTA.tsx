@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const CTA = () => {
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
+    <section id="cta" className="relative py-24 px-6 overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 blur-3xl"></div>
