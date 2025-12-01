@@ -42,8 +42,34 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="relative py-24 px-6">
-      <div className="container mx-auto">
+    <section id="services" className="relative py-24 px-6 overflow-hidden">
+      {/* Floating geometric shapes */}
+      <motion.div
+        className="absolute top-20 -left-20 w-64 h-64 border border-primary/20 rounded-full"
+        animate={{
+          rotate: 360,
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+      <motion.div
+        className="absolute bottom-20 -right-20 w-80 h-80 border border-secondary/20 rounded-full"
+        animate={{
+          rotate: -360,
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+      
+      <div className="container mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,11 +91,15 @@ const Services = () => {
               viewport={{ once: true }}
               transition={{ delay: service.delay, duration: 0.6 }}
               className="glass-panel p-8 rounded-2xl hover-lift group cursor-pointer"
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, y: -5 }}
             >
-              <div className="mb-6 w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:shadow-[var(--glow-cyan)] transition-all duration-300">
+              <motion.div 
+                className="mb-6 w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:shadow-[var(--glow-cyan)] transition-all duration-300"
+                whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+                transition={{ duration: 0.5 }}
+              >
                 <service.icon className="w-8 h-8 text-white" />
-              </div>
+              </motion.div>
               
               <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
                 {service.title}

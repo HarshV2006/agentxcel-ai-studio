@@ -31,10 +31,32 @@ const features = [
 const Features = () => {
   return (
     <section className="relative py-24 px-6 overflow-hidden">
-      {/* Background decoration */}
+      {/* Background decoration with animation */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/2 left-0 w-96 h-96 bg-accent/30 rounded-full blur-[120px]"></div>
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-secondary/30 rounded-full blur-[120px]"></div>
+        <motion.div 
+          className="absolute top-1/2 left-0 w-96 h-96 bg-accent/30 rounded-full blur-[120px]"
+          animate={{
+            scale: [1, 1.2, 1],
+            x: [0, 50, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        ></motion.div>
+        <motion.div 
+          className="absolute top-1/2 right-0 w-96 h-96 bg-secondary/30 rounded-full blur-[120px]"
+          animate={{
+            scale: [1, 1.3, 1],
+            x: [0, -50, 0],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        ></motion.div>
       </div>
       
       <div className="container mx-auto relative z-10">
@@ -58,12 +80,17 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.6 }}
+              whileHover={{ y: -10, scale: 1.02 }}
               className="relative group"
             >
               <div className="glass-panel p-8 rounded-2xl h-full hover-lift">
-                <div className={`mb-6 w-20 h-20 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center`}>
+                <motion.div 
+                  className={`mb-6 w-20 h-20 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center`}
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <feature.icon className="w-10 h-10 text-white" />
-                </div>
+                </motion.div>
                 
                 <h3 className="text-xl font-bold mb-3">
                   {feature.title}
