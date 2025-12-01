@@ -38,8 +38,28 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="relative py-24 px-6">
-      <div className="container mx-auto">
+    <section id="projects" className="relative py-24 px-6 overflow-hidden">
+      {/* Animated background lines */}
+      <motion.div 
+        className="absolute inset-0 opacity-10"
+        animate={{
+          backgroundPosition: ["0% 0%", "100% 100%"],
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+        style={{
+          backgroundImage: `
+            linear-gradient(45deg, transparent 48%, hsl(var(--primary)) 49%, hsl(var(--primary)) 51%, transparent 52%),
+            linear-gradient(-45deg, transparent 48%, hsl(var(--secondary)) 49%, hsl(var(--secondary)) 51%, transparent 52%)
+          `,
+          backgroundSize: "40px 40px"
+        }}
+      />
+      
+      <div className="container mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -60,13 +80,17 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: project.delay, duration: 0.6 }}
-              className="glass-panel rounded-2xl overflow-hidden hover-lift group"
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="glass-panel rounded-2xl overflow-hidden hover-lift group relative"
             >
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/10 group-hover:to-secondary/10 transition-all duration-500 rounded-2xl"></div>
+              
               <div className="relative overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
               </div>
