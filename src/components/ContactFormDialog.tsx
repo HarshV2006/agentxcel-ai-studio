@@ -27,7 +27,7 @@ const ContactFormDialog = ({ isOpen, onClose, type }: ContactFormDialogProps) =>
     // Create WhatsApp message
     const message = `*New ${type === "build" ? "Project" : type === "strategy" ? "Strategy Call" : "Contact"} Request*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone}\n*Message:* ${formData.message}`;
     
-    const whatsappUrl = `https://wa.me/918368435851?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/919257918623?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     
     toast({
