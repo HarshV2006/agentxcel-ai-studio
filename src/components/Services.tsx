@@ -98,7 +98,7 @@ const Services = () => {
                 whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                 transition={{ duration: 0.5 }}
               >
-                <service.icon className="w-8 h-8 text-white" />
+                <service.icon className="w-8 h-8 text-primary-foreground" />
               </motion.div>
               
               <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
