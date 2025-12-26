@@ -8,55 +8,55 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Light theme background */
-    --background: 0 0% 100%;
-    --foreground: 220 20% 15%;
+    /* Deep tech background */
+    --background: 218 100% 3%;
+    --foreground: 0 0% 98%;
 
-    /* Light cards */
-    --card: 0 0% 98%;
-    --card-foreground: 220 20% 15%;
+    /* Glass cards */
+    --card: 220 50% 10%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover: 220 50% 10%;
+    --popover-foreground: 0 0% 98%;
 
     /* Cyan gradient primary */
-    --primary: 203 100% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 203 100% 64%;
+    --primary-foreground: 0 0% 98%;
     
     /* Purple accent */
     --secondary: 267 100% 59%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary-foreground: 0 0% 98%;
 
-    /* Muted light */
-    --muted: 220 15% 95%;
-    --muted-foreground: 220 10% 45%;
+    /* Muted glass */
+    --muted: 220 30% 15%;
+    --muted-foreground: 220 10% 70%;
 
     /* Cyan accent */
-    --accent: 175 65% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 175 65% 53%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 92%;
-    --ring: 203 100% 50%;
+    --border: 220 30% 20%;
+    --input: 220 30% 15%;
+    --ring: 203 100% 64%;
 
     --radius: 1rem;
     
     /* Custom gradient tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(203 100% 50%) 0%, hsl(267 100% 59%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(175 65% 45%) 0%, hsl(267 100% 59%) 100%);
-    --gradient-radial: radial-gradient(circle at center, hsl(203 100% 50% / 0.15) 0%, transparent 70%);
+    --gradient-primary: linear-gradient(135deg, hsl(203 100% 64%) 0%, hsl(267 100% 59%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(175 65% 53%) 0%, hsl(267 100% 59%) 100%);
+    --gradient-radial: radial-gradient(circle at center, hsl(203 100% 64% / 0.2) 0%, transparent 70%);
     
-    /* Glow effects - subtle for light theme */
-    --glow-cyan: 0 0 30px hsl(203 100% 50% / 0.25), 0 0 60px hsl(203 100% 50% / 0.1);
-    --glow-purple: 0 0 30px hsl(267 100% 59% / 0.25), 0 0 60px hsl(267 100% 59% / 0.1);
-    --glow-mixed: 0 0 20px hsl(203 100% 50% / 0.2), 0 0 40px hsl(267 100% 59% / 0.15);
+    /* Glow effects */
+    --glow-cyan: 0 0 40px hsl(203 100% 64% / 0.4), 0 0 80px hsl(203 100% 64% / 0.2);
+    --glow-purple: 0 0 40px hsl(267 100% 59% / 0.4), 0 0 80px hsl(267 100% 59% / 0.2);
+    --glow-mixed: 0 0 30px hsl(203 100% 64% / 0.3), 0 0 60px hsl(267 100% 59% / 0.2);
     
-    /* Glass effect - light theme */
-    --glass-bg: hsl(0 0% 100% / 0.7);
-    --glass-border: hsl(220 15% 85% / 0.5);
+    /* Glass effect */
+    --glass-bg: hsl(220 50% 10% / 0.4);
+    --glass-border: hsl(220 30% 30% / 0.3);
     
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -84,15 +84,14 @@ All colors MUST be HSL.
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px hsl(220 15% 50% / 0.08);
   }
   
   .glow-text-cyan {
-    color: hsl(203 100% 45%);
+    text-shadow: 0 0 20px hsl(203 100% 64% / 0.5);
   }
   
   .glow-text-purple {
-    color: hsl(267 100% 55%);
+    text-shadow: 0 0 20px hsl(267 100% 59% / 0.5);
   }
   
   .hover-lift {
