@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.jpeg";
 import ContactFormDialog from "./ContactFormDialog";
 
@@ -9,13 +10,16 @@ const navItems = [
   { id: 'hero', label: 'Home' },
   { id: 'services', label: 'Services' },
   { id: 'projects', label: 'Works' },
-  { id: 'about', label: 'About' }
+  { id: 'about', label: 'About' },
+  { id: 'portfolio', label: 'Portfolio', isPage: true }
 ];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,10 +41,15 @@ const Header = () => {
     };
   }, [isMobileMenuOpen]);
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (id: string, isPage?: boolean) => {
     setIsMobileMenuOpen(false);
+    if (isPage) return; // Navigation handled by Link component
     setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      if (!isHomePage) {
+        window.location.href = `/#${id}`;
+      } else {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }
     }, 300);
   };
 
@@ -76,20 +85,32 @@ const Header = () => {
             {/* Desktop Navigation Links */}
             <nav className="hidden md:flex items-center gap-8">
               {navItems.map((item) => (
-                <motion.button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-foreground/80 hover:text-foreground transition-colors relative"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item.label}
-                  <motion.span
-                    className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary"
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.button>
+                item.isPage ? (
+                  <Link key={item.id} to={`/${item.id}`}>
+                    <motion.span
+                      className="text-foreground/80 hover:text-foreground transition-colors relative cursor-pointer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {item.label}
+                    </motion.span>
+                  </Link>
+                ) : (
+                  <motion.button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-foreground/80 hover:text-foreground transition-colors relative"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item.label}
+                    <motion.span
+                      className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary"
+                      whileHover={{ width: "100%" }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.button>
+                )
               ))}
             </nav>
 
@@ -168,17 +189,31 @@ const Header = () => {
                 {/* Nav Items */}
                 <nav className="flex flex-col gap-2">
                   {navItems.map((item, index) => (
-                    <motion.button
-                      key={item.id}
-                      initial={{ x: 50, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.1 + 0.2 }}
-                      onClick={() => scrollToSection(item.id)}
-                      className="text-left py-4 text-xl font-medium text-foreground/80 hover:text-foreground transition-colors border-b border-primary/10 hover:border-primary/30 hover:pl-2"
-                    >
-                      <span className="text-primary/50 mr-3 text-sm">0{index + 1}</span>
-                      {item.label}
-                    </motion.button>
+                    item.isPage ? (
+                      <Link key={item.id} to={`/${item.id}`} onClick={() => setIsMobileMenuOpen(false)}>
+                        <motion.div
+                          initial={{ x: 50, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{ delay: index * 0.1 + 0.2 }}
+                          className="text-left py-4 text-xl font-medium text-foreground/80 hover:text-foreground transition-colors border-b border-primary/10 hover:border-primary/30 hover:pl-2"
+                        >
+                          <span className="text-primary/50 mr-3 text-sm">0{index + 1}</span>
+                          {item.label}
+                        </motion.div>
+                      </Link>
+                    ) : (
+                      <motion.button
+                        key={item.id}
+                        initial={{ x: 50, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.1 + 0.2 }}
+                        onClick={() => scrollToSection(item.id)}
+                        className="text-left py-4 text-xl font-medium text-foreground/80 hover:text-foreground transition-colors border-b border-primary/10 hover:border-primary/30 hover:pl-2"
+                      >
+                        <span className="text-primary/50 mr-3 text-sm">0{index + 1}</span>
+                        {item.label}
+                      </motion.button>
+                    )
                   ))}
                 </nav>
 
