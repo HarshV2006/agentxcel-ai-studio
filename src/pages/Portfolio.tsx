@@ -224,7 +224,7 @@ const Portfolio = () => {
                   onClick={() => setSelectedItem(item)}
                   className="glass-panel rounded-2xl overflow-hidden cursor-pointer group"
                 >
-                  <div className="relative overflow-hidden aspect-video">
+                  <div className="relative overflow-hidden aspect-[3/4]">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -296,7 +296,7 @@ const Portfolio = () => {
                 <img
                   src={selectedItem.image}
                   alt={selectedItem.title}
-                  className="w-full aspect-video object-cover"
+                  className="w-full max-h-[70vh] object-contain bg-background"
                 />
                 <button
                   onClick={() => setSelectedItem(null)}
