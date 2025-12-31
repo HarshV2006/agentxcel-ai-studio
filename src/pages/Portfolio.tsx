@@ -53,28 +53,55 @@ const portfolioItems = [
     image: specialMojito,
     tags: ["Product Design", "Beverage"],
   },
-  // AI Videos (placeholders - replace with your actual work)
+  // AI Videos
   {
     id: 5,
     category: "ai-videos",
-    title: "AI Product Demo",
-    description: "AI-generated product demonstration video with realistic avatars and animations.",
-    image: "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&q=80",
-    tags: ["AI Video", "Demo"],
+    title: "3D Wedding Invitation",
+    description: "Stunning AI-generated 3D wedding invitation video with elegant animations and beautiful visual effects.",
+    video: "/videos/wedding-invitation.mp4",
+    tags: ["AI Video", "Wedding"],
     isVideo: true,
   },
   {
     id: 6,
     category: "ai-videos",
-    title: "AI Explainer Video",
-    description: "Complex concepts simplified through AI-powered animated explainer videos.",
-    image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&q=80",
-    tags: ["Explainer", "Animation"],
+    title: "Bansal Group Promotional",
+    description: "Professional AI-powered promotional video for Bansal Group showcasing business excellence.",
+    video: "/videos/bansal-group.mp4",
+    tags: ["AI Video", "Corporate"],
+    isVideo: true,
+  },
+  {
+    id: 7,
+    category: "ai-videos",
+    title: "Perfume Commercial",
+    description: "Luxurious AI-generated perfume advertisement with sophisticated visual storytelling.",
+    video: "/videos/perfume.mp4",
+    tags: ["AI Video", "Product"],
+    isVideo: true,
+  },
+  {
+    id: 8,
+    category: "ai-videos",
+    title: "Client AI Video",
+    description: "Custom AI video production for client showcasing innovative visual effects and storytelling.",
+    video: "/videos/client-ai-video.mp4",
+    tags: ["AI Video", "Custom"],
+    isVideo: true,
+  },
+  {
+    id: 9,
+    category: "ai-videos",
+    title: "Vinwash Promotional",
+    description: "Dynamic AI-powered promotional video for Vinwash brand with engaging visuals.",
+    video: "/videos/vinwash.mp4",
+    tags: ["AI Video", "Brand"],
     isVideo: true,
   },
   // Websites (placeholders - replace with your actual work)
   {
-    id: 7,
+    id: 10,
     category: "websites",
     title: "E-commerce Platform",
     description: "Full-featured online store with modern design and seamless user experience.",
@@ -82,7 +109,7 @@ const portfolioItems = [
     tags: ["E-commerce", "React"],
   },
   {
-    id: 8,
+    id: 11,
     category: "websites",
     title: "Business Dashboard",
     description: "Modern analytics dashboard with real-time data visualization.",
@@ -91,7 +118,7 @@ const portfolioItems = [
   },
   // Digital Marketing (placeholders - replace with your actual work)
   {
-    id: 9,
+    id: 12,
     category: "digital-marketing",
     title: "Meta Ads Campaign",
     description: "High-converting Facebook & Instagram ad campaigns with excellent ROAS.",
@@ -99,7 +126,7 @@ const portfolioItems = [
     tags: ["Meta Ads", "PPC"],
   },
   {
-    id: 10,
+    id: 13,
     category: "digital-marketing",
     title: "SEO Optimization",
     description: "Comprehensive SEO strategy resulting in significant organic traffic increase.",
@@ -108,9 +135,20 @@ const portfolioItems = [
   },
 ];
 
+type PortfolioItem = {
+  id: number;
+  category: string;
+  title: string;
+  description: string;
+  image?: string;
+  video?: string;
+  tags: string[];
+  isVideo?: boolean;
+};
+
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [selectedItem, setSelectedItem] = useState<typeof portfolioItems[0] | null>(null);
+  const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
 
   const filteredItems = activeCategory === "all"
     ? portfolioItems
@@ -225,11 +263,26 @@ const Portfolio = () => {
                   className="glass-panel rounded-2xl overflow-hidden cursor-pointer group"
                 >
                   <div className="relative overflow-hidden aspect-[3/4]">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+                    {item.isVideo && item.video ? (
+                      <video
+                        src={item.video}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        muted
+                        loop
+                        playsInline
+                        onMouseEnter={(e) => e.currentTarget.play()}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.pause();
+                          e.currentTarget.currentTime = 0;
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                     
                     {item.isVideo && (
@@ -293,11 +346,20 @@ const Portfolio = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative">
-                <img
-                  src={selectedItem.image}
-                  alt={selectedItem.title}
-                  className="w-full max-h-[70vh] object-contain bg-background"
-                />
+                {selectedItem.isVideo && selectedItem.video ? (
+                  <video
+                    src={selectedItem.video}
+                    className="w-full max-h-[70vh] object-contain bg-background"
+                    controls
+                    autoPlay
+                  />
+                ) : (
+                  <img
+                    src={selectedItem.image}
+                    alt={selectedItem.title}
+                    className="w-full max-h-[70vh] object-contain bg-background"
+                  />
+                )}
                 <button
                   onClick={() => setSelectedItem(null)}
                   className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors"
