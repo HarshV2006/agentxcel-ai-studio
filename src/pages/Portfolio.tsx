@@ -5,6 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.jpeg";
 
+// Import graphics portfolio images
+import gariyaGaon from "@/assets/portfolio/gariya-gaon.jpg";
+import risingRealEstate from "@/assets/portfolio/rising-real-estate.jpg";
+import happyKunj from "@/assets/portfolio/happy-kunj.png";
+import specialMojito from "@/assets/portfolio/special-mojito.jpg";
+
 const categories = [
   { id: "all", label: "All Work", icon: null },
   { id: "graphics", label: "Graphics", icon: Image },
@@ -13,26 +19,43 @@ const categories = [
   { id: "digital-marketing", label: "Digital Marketing", icon: Megaphone },
 ];
 
-// Sample portfolio items - replace with your actual work
 const portfolioItems = [
+  // Graphics
   {
     id: 1,
     category: "graphics",
-    title: "Brand Identity Design",
-    description: "Complete visual branding package including logo, color palette, and brand guidelines.",
-    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80",
-    tags: ["Logo Design", "Branding"],
+    title: "Gariya Gaon Real Estate",
+    description: "Premium real estate promotional poster with family-oriented design and detailed property features.",
+    image: gariyaGaon,
+    tags: ["Real Estate", "Poster Design"],
   },
   {
     id: 2,
     category: "graphics",
-    title: "Social Media Graphics",
-    description: "Eye-catching social media posts and stories designed for maximum engagement.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
-    tags: ["Social Media", "Design"],
+    title: "The Rising Real Estate",
+    description: "Festive New Year campaign design featuring multi-generational family appeal and premium property showcase.",
+    image: risingRealEstate,
+    tags: ["Real Estate", "Campaign"],
   },
   {
     id: 3,
+    category: "graphics",
+    title: "Happy Kunj Township",
+    description: "Modern township launch promotional material with clean layout and compelling price presentation.",
+    image: happyKunj,
+    tags: ["Real Estate", "Township"],
+  },
+  {
+    id: 4,
+    category: "graphics",
+    title: "Special Mojito Product",
+    description: "Dynamic product advertisement with splash effects and vibrant green aesthetics for beverage brand.",
+    image: specialMojito,
+    tags: ["Product Design", "Beverage"],
+  },
+  // AI Videos (placeholders - replace with your actual work)
+  {
+    id: 5,
     category: "ai-videos",
     title: "AI Product Demo",
     description: "AI-generated product demonstration video with realistic avatars and animations.",
@@ -41,7 +64,7 @@ const portfolioItems = [
     isVideo: true,
   },
   {
-    id: 4,
+    id: 6,
     category: "ai-videos",
     title: "AI Explainer Video",
     description: "Complex concepts simplified through AI-powered animated explainer videos.",
@@ -49,70 +72,39 @@ const portfolioItems = [
     tags: ["Explainer", "Animation"],
     isVideo: true,
   },
+  // Websites (placeholders - replace with your actual work)
   {
-    id: 5,
+    id: 7,
     category: "websites",
     title: "E-commerce Platform",
-    description: "Full-featured online store with AI-powered product recommendations.",
+    description: "Full-featured online store with modern design and seamless user experience.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
     tags: ["E-commerce", "React"],
   },
   {
-    id: 6,
+    id: 8,
     category: "websites",
-    title: "SaaS Dashboard",
+    title: "Business Dashboard",
     description: "Modern analytics dashboard with real-time data visualization.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    tags: ["Dashboard", "SaaS"],
+    tags: ["Dashboard", "Web App"],
   },
+  // Digital Marketing (placeholders - replace with your actual work)
   {
-    id: 7,
+    id: 9,
     category: "digital-marketing",
     title: "Meta Ads Campaign",
-    description: "High-converting Facebook & Instagram ad campaigns with 3x ROAS.",
+    description: "High-converting Facebook & Instagram ad campaigns with excellent ROAS.",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
     tags: ["Meta Ads", "PPC"],
   },
   {
-    id: 8,
+    id: 10,
     category: "digital-marketing",
     title: "SEO Optimization",
-    description: "Comprehensive SEO strategy resulting in 200% organic traffic increase.",
+    description: "Comprehensive SEO strategy resulting in significant organic traffic increase.",
     image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&q=80",
     tags: ["SEO", "Analytics"],
-  },
-  {
-    id: 9,
-    category: "graphics",
-    title: "UI/UX Design System",
-    description: "Complete design system with components, tokens, and documentation.",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
-    tags: ["UI/UX", "Design System"],
-  },
-  {
-    id: 10,
-    category: "websites",
-    title: "AI Coaching Platform",
-    description: "Interactive coaching platform with AI-powered personalization.",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
-    tags: ["AI", "Platform"],
-  },
-  {
-    id: 11,
-    category: "ai-videos",
-    title: "AI Training Videos",
-    description: "Series of AI-generated training content for corporate clients.",
-    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80",
-    tags: ["Training", "Corporate"],
-    isVideo: true,
-  },
-  {
-    id: 12,
-    category: "digital-marketing",
-    title: "Email Marketing Funnel",
-    description: "Automated email sequences with 45% open rate and high conversions.",
-    image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&q=80",
-    tags: ["Email", "Automation"],
   },
 ];
 
