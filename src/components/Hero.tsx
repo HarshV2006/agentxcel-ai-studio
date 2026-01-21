@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.jpeg";
 import ContactFormDialog from "./ContactFormDialog";
@@ -121,8 +122,28 @@ const Hero = () => {
         </div>
       </motion.div>
       
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+      >
+        <motion.div
+          className="flex flex-col items-center gap-2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <span className="text-muted-foreground text-sm uppercase tracking-widest">Scroll</span>
+          <div className="w-10 h-10 rounded-full border border-primary/50 flex items-center justify-center bg-background/30 backdrop-blur-sm">
+            <ChevronDown className="w-5 h-5 text-primary" />
+          </div>
+        </motion.div>
+      </motion.div>
+
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
 
       <ContactFormDialog
         isOpen={isBuildOpen}
