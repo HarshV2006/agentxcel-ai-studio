@@ -72,7 +72,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Stunning AI-generated 3D wedding invitation video with elegant animations and beautiful visual effects.",
     video: "/videos/wedding-invitation.mp4",
-    poster: "/placeholder.svg",
+    poster: "/portfolio-posters/wedding-invitation-poster.jpeg",
     tags: ["AI Video", "Wedding"],
     isVideo: true,
   },
