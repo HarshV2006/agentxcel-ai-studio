@@ -1,14 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.jpeg";
-import heroVisual from "@/assets/hero-visual.jpg";
 import ContactFormDialog from "./ContactFormDialog";
 
 const Hero = () => {
   const [isBuildOpen, setIsBuildOpen] = useState(false);
   const [isStrategyOpen, setIsStrategyOpen] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -18,47 +16,45 @@ const Hero = () => {
   
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   return (
     <section ref={heroRef} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Animated background elements with parallax */}
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/videos/hero-ai-revolution.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-background/70" />
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10" />
+      </div>
+
+      {/* Animated glow effects */}
       <motion.div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-40 pointer-events-none z-[1]"
         style={{ y }}
       >
         <motion.div 
-          className="absolute top-20 left-20 w-96 h-96 bg-primary/30 rounded-full blur-[120px] animate-pulse-glow"
-          animate={{
-            x: mousePosition.x * 0.02,
-            y: mousePosition.y * 0.02,
-          }}
-          transition={{ type: "spring", damping: 30 }}
-        ></motion.div>
+          className="absolute top-20 left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse-glow"
+        />
         <motion.div 
-          className="absolute bottom-20 right-20 w-96 h-96 bg-secondary/30 rounded-full blur-[120px] animate-pulse-glow" 
+          className="absolute bottom-20 right-20 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] animate-pulse-glow" 
           style={{ animationDelay: '1s' }}
-          animate={{
-            x: -mousePosition.x * 0.02,
-            y: -mousePosition.y * 0.02,
-          }}
-          transition={{ type: "spring", damping: 30 }}
-        ></motion.div>
+        />
       </motion.div>
       
-      {/* Particle grid with parallax */}
-      <motion.div 
-        className="absolute inset-0 bg-[linear-gradient(rgba(77,166,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(77,166,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"
-        style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "30%"]) }}
-      ></motion.div>
+      {/* Particle grid overlay */}
+      <div 
+        className="absolute inset-0 bg-[linear-gradient(rgba(77,166,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(77,166,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] z-[1]"
+      />
       
       <motion.div 
         className="container relative z-10 px-6 mx-auto"
@@ -121,26 +117,6 @@ const Hero = () => {
             >
               See Our Work
             </Button>
-          </motion.div>
-          
-          {/* Visual element */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
-            className="relative mt-16 animate-float max-w-2xl"
-          >
-            <div className="relative">
-              <img
-                src={heroVisual}
-                alt="AI Brain Visualization"
-                className="w-full h-auto rounded-3xl"
-                style={{ filter: 'drop-shadow(0 0 60px rgba(77, 166, 255, 0.3))' }}
-              />
-              {/* Floating orbs */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-accent to-primary rounded-full blur-xl opacity-60 animate-pulse"></div>
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-secondary to-accent rounded-full blur-xl opacity-50 animate-pulse" style={{ animationDelay: '1s' }}></div>
-            </div>
           </motion.div>
         </div>
       </motion.div>
