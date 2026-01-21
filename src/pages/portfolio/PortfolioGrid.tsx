@@ -23,7 +23,7 @@ export function PortfolioGrid({
     return () => mql.removeEventListener("change", update);
   }, [isMobile]);
 
-  const fallbackPoster = useMemo(() => "/og-image.jpeg", []);
+  const fallbackPoster = useMemo(() => "/placeholder.svg", []);
 
   return (
     <section className="pb-24 px-6">
