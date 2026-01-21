@@ -83,7 +83,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Professional AI-powered promotional video for Bansal Group showcasing business excellence.",
     video: "/videos/bansal-group.mp4",
-    poster: "/placeholder.svg",
+    poster: "/portfolio-posters/bansal-group-poster.jpeg",
     tags: ["AI Video", "Corporate"],
     isVideo: true,
   },
