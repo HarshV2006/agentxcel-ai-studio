@@ -1,7 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, Play } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 
 import type { PortfolioItem } from "./portfolio-data";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function PortfolioGrid({
   items,
@@ -10,6 +12,19 @@ export function PortfolioGrid({
   items: PortfolioItem[];
   onSelect: (item: PortfolioItem) => void;
 }) {
+  const isMobile = useIsMobile();
+  const [canHover, setCanHover] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setCanHover(mql.matches && !isMobile);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, [isMobile]);
+
+  const fallbackPoster = useMemo(() => "/og-image.jpeg", []);
+
   return (
     <section className="pb-24 px-6">
       <div className="container mx-auto">
@@ -31,13 +46,27 @@ export function PortfolioGrid({
                   {item.isVideo && item.video ? (
                     <video
                       src={item.video}
+                      poster={item.poster ?? fallbackPoster}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       muted
                       loop
                       playsInline
-                      preload="metadata"
-                      onMouseEnter={(e) => e.currentTarget.play()}
+                      preload={canHover ? "metadata" : "none"}
+                      onMouseEnter={(e) => {
+                        if (!canHover) return;
+                        void e.currentTarget.play();
+                      }}
                       onMouseLeave={(e) => {
+                        if (!canHover) return;
+                        e.currentTarget.pause();
+                        e.currentTarget.currentTime = 0;
+                      }}
+                      onFocus={(e) => {
+                        if (!canHover) return;
+                        void e.currentTarget.play();
+                      }}
+                      onBlur={(e) => {
+                        if (!canHover) return;
                         e.currentTarget.pause();
                         e.currentTarget.currentTime = 0;
                       }}

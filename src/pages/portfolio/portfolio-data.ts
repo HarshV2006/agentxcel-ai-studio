@@ -20,6 +20,7 @@ export type PortfolioItem = {
   description: string;
   image?: string;
   video?: string;
+  poster?: string;
   tags: string[];
   isVideo?: boolean;
 };
@@ -71,6 +72,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Stunning AI-generated 3D wedding invitation video with elegant animations and beautiful visual effects.",
     video: "/videos/wedding-invitation.mp4",
+    poster: "/og-image.jpeg",
     tags: ["AI Video", "Wedding"],
     isVideo: true,
   },
@@ -81,6 +83,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Professional AI-powered promotional video for Bansal Group showcasing business excellence.",
     video: "/videos/bansal-group.mp4",
+    poster: "/og-image.jpeg",
     tags: ["AI Video", "Corporate"],
     isVideo: true,
   },
@@ -91,6 +94,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Luxurious AI-generated perfume advertisement with sophisticated visual storytelling.",
     video: "/videos/perfume.mp4",
+    poster: "/og-image.jpeg",
     tags: ["AI Video", "Product"],
     isVideo: true,
   },
@@ -101,6 +105,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Custom AI video production for client showcasing innovative visual effects and storytelling.",
     video: "/videos/client-ai-video.mp4",
+    poster: "/og-image.jpeg",
     tags: ["AI Video", "Custom"],
     isVideo: true,
   },
@@ -111,6 +116,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Dynamic AI-powered promotional video for Vinwash brand with engaging visuals.",
     video: "/videos/vinwash.mp4",
+    poster: "/og-image.jpeg",
     tags: ["AI Video", "Brand"],
     isVideo: true,
   },
