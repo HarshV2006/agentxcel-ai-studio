@@ -94,7 +94,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Luxurious AI-generated perfume advertisement with sophisticated visual storytelling.",
     video: "/videos/perfume.mp4",
-    poster: "/placeholder.svg",
+    poster: "/portfolio-posters/perfume-poster.jpeg",
     tags: ["AI Video", "Product"],
     isVideo: true,
   },
