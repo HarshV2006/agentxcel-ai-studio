@@ -121,25 +121,24 @@ export const portfolioItems: PortfolioItem[] = [
     isVideo: true,
   },
 
-  // Websites (placeholders - replace with your actual work)
+  // Websites
   {
     id: 10,
     category: "websites",
-    title: "E-commerce Platform",
+    title: "Divine Junction",
     description:
-      "Full-featured online store with modern design and seamless user experience.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    tags: ["E-commerce", "React"],
+      "Spiritual consultation website for Vastu Shastra, Astrology & Numerology services with elegant purple-gold design.",
+    image: "/portfolio-posters/divine-junction-website.png",
+    tags: ["Website", "Spiritual"],
   },
   {
     id: 11,
     category: "websites",
-    title: "Business Dashboard",
-    description: "Modern analytics dashboard with real-time data visualization.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    tags: ["Dashboard", "Web App"],
+    title: "Klean Fit Iconic",
+    description:
+      "Premium gym & fitness center website for Jaipur's top-rated fitness destination with bold dark theme.",
+    image: "/portfolio-posters/klean-fit-website.png",
+    tags: ["Website", "Fitness"],
   },
 
   // Digital Marketing (placeholders - replace with your actual work)
