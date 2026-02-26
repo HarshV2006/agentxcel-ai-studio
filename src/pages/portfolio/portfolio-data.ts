@@ -2,6 +2,7 @@ import gariyaGaon from "@/assets/portfolio/gariya-gaon.jpg";
 import risingRealEstate from "@/assets/portfolio/rising-real-estate.jpg";
 import happyKunj from "@/assets/portfolio/happy-kunj.png";
 import specialMojito from "@/assets/portfolio/special-mojito.jpg";
+import hamzaPerfume from "@/assets/portfolio/hamza-perfume.png";
 
 export const categories = [
   { id: "all", label: "All Work" },
@@ -62,6 +63,16 @@ export const portfolioItems: PortfolioItem[] = [
       "Dynamic product advertisement with splash effects and vibrant green aesthetics for beverage brand.",
     image: specialMojito,
     tags: ["Product Design", "Beverage"],
+  },
+
+  {
+    id: 14,
+    category: "graphics",
+    title: "Hamza Attar & Perfumes",
+    description:
+      "Luxurious perfume brand poster with golden aesthetics, dramatic lighting and elegant product showcase.",
+    image: hamzaPerfume,
+    tags: ["Product Design", "Perfume"],
   },
 
   // AI Videos
