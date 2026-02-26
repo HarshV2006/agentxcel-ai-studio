@@ -101,12 +101,12 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 8,
     category: "ai-videos",
-    title: "Client AI Video",
+    title: "The Rising Real Estate",
     description:
-      "Custom AI video production for client showcasing innovative visual effects and storytelling.",
-    video: "/videos/client-ai-video.mp4",
+      "Professional AI-powered promotional video for The Rising Real Estate with stunning visual effects.",
+    video: "/videos/rising-real-estate.mp4",
     poster: "/placeholder.svg",
-    tags: ["AI Video", "Custom"],
+    tags: ["AI Video", "Real Estate"],
     isVideo: true,
   },
   {
