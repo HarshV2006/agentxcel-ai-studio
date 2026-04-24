@@ -105,7 +105,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Professional AI-powered promotional video for The Rising Real Estate with stunning visual effects.",
     video: "/videos/rising-real-estate.mp4",
-    poster: "/placeholder.svg",
+    poster: "/portfolio-posters/rising-real-estate-poster.jpg",
     tags: ["AI Video", "Real Estate"],
     isVideo: true,
   },
