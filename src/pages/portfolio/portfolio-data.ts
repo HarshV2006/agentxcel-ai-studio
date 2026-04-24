@@ -163,8 +163,6 @@ export const portfolioItems: PortfolioItem[] = [
     poster: "/portfolio-posters/shark-tank-poster.jpg",
     tags: ["AI Video", "Concept"],
     isVideo: true,
-    tags: ["AI Video", "Brand"],
-    isVideo: true,
   },
 
   // Websites
