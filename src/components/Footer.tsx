@@ -69,7 +69,21 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-border/50 text-center text-muted-foreground">
+        <div className="pt-8 border-t border-border/50 text-center text-muted-foreground space-y-3">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-8">
+            <p className="flex items-center gap-2">
+              <span className="font-semibold text-foreground">Harsh Kumawat</span>
+              <span className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                Founder
+              </span>
+            </p>
+            <p className="flex items-center gap-2">
+              <span className="font-semibold text-foreground">Yashveer</span>
+              <span className="text-xs px-3 py-1 rounded-full bg-secondary/10 text-secondary border border-secondary/20">
+                Developer
+              </span>
+            </p>
+          </div>
           <p>&copy; {new Date().getFullYear()} AgentXcel AI. All rights reserved.</p>
         </div>
       </div>
