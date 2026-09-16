@@ -69,8 +69,12 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-border/50 text-center text-muted-foreground">
+        <div className="pt-8 border-t border-border/50 text-center text-muted-foreground space-y-1">
           <p>&copy; {new Date().getFullYear()} AgentXcel AI. All rights reserved.</p>
+          <p className="text-sm">
+            Developed by{" "}
+            <span className="glow-text-cyan font-semibold">Yashveer</span>
+          </p>
         </div>
       </div>
     </footer>
